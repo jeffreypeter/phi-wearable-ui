@@ -5,19 +5,21 @@ import { TranslateModule } from '@ngx-translate/core';
 
 import { LayoutRoutingModule } from './layout-routing.module';
 import { LayoutComponent } from './layout.component';
-import { HeaderComponent, SidebarComponent } from '../shared';
+import {SharedModule} from '../shared/shared.module';
+// import { HeaderComponent, SidebarComponent } from '../shared';
 
 @NgModule({
     imports: [
         CommonModule,
         NgbDropdownModule.forRoot(),
         LayoutRoutingModule,
-        TranslateModule
+        TranslateModule,
+        SharedModule
     ],
     declarations: [
-        LayoutComponent,
+        LayoutComponent/*,
         HeaderComponent,
-        SidebarComponent,
+        SidebarComponent,*/
     ]
 })
 export class LayoutModule { }
