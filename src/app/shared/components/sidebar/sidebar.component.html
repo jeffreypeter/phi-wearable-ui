@@ -3,7 +3,13 @@
         <a routerLink="/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-dashboard"></i>&nbsp;{{ 'Dashboard' | translate }}
         </a>
-        <div class="nested-menu">
+        <a routerLink="/users" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-user"></i>&nbsp;{{ 'Users' | translate }}
+        </a>
+        <a routerLink="/collections" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-table"></i>&nbsp;{{ 'Collections' | translate }}
+        </a>
+        <!--<div class="nested-menu">
             <a class="list-group-item" (click)="addExpandClass('pages')">
                 <span><i class="fa fa-fw fa-table"></i>&nbsp; {{ 'Collections' | translate }}</span>
             </a>
@@ -12,7 +18,7 @@
                     <li *ngFor="let collection of collectionLst" >
                         <a href="javascript:void(0)"><span>{{ collection.name | translate }}</span></a>
                     </li>
-                    <!--<li>
+                    &lt;!&ndash;<li>
                         <a href="javascript:void(0)"><span>{{ 'Submenu' | translate }}</span></a>
                     </li>
                     <li>
@@ -20,11 +26,11 @@
                     </li>
                     <li>
                         <a href="javascript:void(0)"><span>{{ 'Submenu' | translate }}</span></a>
-                    </li>-->
+                    </li>&ndash;&gt;
                 </ul>
             </li>
-        </div>
-        <a [routerLink]="['/charts']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+        </div>-->
+        <!--<a [routerLink]="['/charts']" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;{{ 'Charts' | translate }}
         </a>
         <a [routerLink]="['/tables']" [routerLinkActive]="['router-link-active']" class="list-group-item">
@@ -65,6 +71,6 @@
         </a>
         <a class="list-group-item more-themes" href="http://www.strapui.com/" >
             {{ 'More Theme' | translate }}
-        </a>
+        </a>-->
     </ul>
 </nav>
