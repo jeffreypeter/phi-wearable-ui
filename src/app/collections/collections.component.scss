@@ -1,16 +1,13 @@
-.main-container{
-    margin-top: 60px;
-    margin-left: 235px;
-    padding: 15px;
-    -ms-overflow-x: hidden;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    position: relative;
-    overflow: hidden;
+@import '~@swimlane/ngx-datatable/release/index.css';
+@import '~@swimlane/ngx-datatable/release/themes/material.css';
+@import '~@swimlane/ngx-datatable/release/themes/dark.css';
+@import '~@swimlane/ngx-datatable/release/assets/icons.css';
 
-}
 @media screen and (max-width: 992px) {
     .main-container {
         margin-left: 0px !important;
     }
+}
+.form-check-label {
+    padding-right: 10px;
 }

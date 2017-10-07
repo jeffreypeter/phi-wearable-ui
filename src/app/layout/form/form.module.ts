@@ -3,13 +3,13 @@ import { CommonModule } from '@angular/common';
 
 import { FormRoutingModule } from './form-routing.module';
 import { FormComponent } from './form.component';
-import { PageHeaderModule } from './../../shared';
+import {SharedModule} from '../../shared/shared.module';
 
 @NgModule({
     imports: [
         CommonModule,
         FormRoutingModule,
-        PageHeaderModule
+        SharedModule
     ],
     declarations: [FormComponent]
 })

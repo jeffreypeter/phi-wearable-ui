@@ -1,25 +1,53 @@
 <app-header></app-header>
 <app-sidebar></app-sidebar>
 <section class="main-container">
-    <!--collections::-->
-    <!--{{collectionData | json }}-->
-    <select (change)="onChange($event)">
-        <option *ngFor="let datatype of datatypes" [value]="datatype">{{datatype}}</option>
-    </select>
-    <table class="table">
-        <tr>
-            <th>#</th>
-            <th>Game</th>
-            <th>Platform</th>
-            <th>Release</th>
-        </tr>
-        <tr *ngFor="let item of collectionData['data']; let i = index">
-            <td>{{i + 1}}</td>
-            <td>{{item.username}}</td>
-            <td>{{item.shim}}</td>
-            <td>{{item.time}}</td>
-            <td>{{item.value}}</td>
-        </tr>
-    </table>
+    <app-page-header [heading]="'Collections'" [icon]="'fa-table'"></app-page-header>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="form-inline">
+                <div class="form-group">
+                    <label class="mr-sm-2" for="collection">Select Collection: </label>
+                    <select class="form-control mb-2 mr-sm-2 mb-sm-0" id="collection"  [(ngModel)]="requestData.collection">
+                        <option *ngFor="let collection of collectionLst;let i = index" [ngValue]="collection.value" [selected]="i===0">{{collection.name}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="mr-sm-2" for="collection">Aggregate By: </label>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label" *ngFor="let item of aggregateBy; let i = index">
+                            <input class="form-check-input" type="radio" name="aggregateBy" [value]="item.value" [checked]="i===0" [(ngModel)]="requestData.aggregateBy">{{item.name}}
+                        </label>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-primary" (click)="onSubmit()" >Submit</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <!--<ngx-datatable
+            [rows]="collectionData.data"
+            [columns]="columns">
+        </ngx-datatable>-->
+        <div class="col-lg-12">
+            <input
+                type='text'
+                style='padding:8px;margin:15px auto;width:30%;'
+                placeholder='Type to filter the name column...'
+                (keyup)='updateFilter($event)'
+            />
+            <ngx-datatable
+                #table
+                [rows]="data"
+                [columns]="keys"
+                [headerHeight]="50"
+                [footerHeight]="50"
+                [rowHeight]="'auto'"
+                [limit]="10"
+                class="material fullscreen"
+                style="top: 5px" [columnMode]="'force'"
+            >
+            </ngx-datatable>
+        </div>
+    </div>
     <!--<router-outlet></router-outlet>-->
 </section>

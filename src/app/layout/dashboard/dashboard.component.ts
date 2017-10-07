@@ -1,17 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../../router.animations';
+import {DataService} from '../../shared/services/data/data.service';
 
 @Component({
     selector: 'app-dashboard',
     templateUrl: './dashboard.component.html',
     styleUrls: ['./dashboard.component.scss'],
-    animations: [routerTransition()]
+    animations: [routerTransition()],
+    providers: [DataService]
 })
 export class DashboardComponent implements OnInit {
     public alerts: Array<any> = [];
     public sliders: Array<any> = [];
-
-    constructor() {
+    public stats: any = {userCount: 0};
+    constructor(private dataService: DataService) {
         this.sliders.push({
             imagePath: 'assets/images/slider1.jpg',
             label: 'First slide label',
@@ -44,6 +46,13 @@ export class DashboardComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.dataService.getUserData().subscribe(
+            data => {
+                console.log('success');
+                console.log(data.length);
+                this.stats.userCount = data.length;
+            }
+        );
     }
 
     public closeAlert(alert: any) {

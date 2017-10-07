@@ -3,13 +3,13 @@ import { CommonModule } from '@angular/common';
 
 import { TablesComponent } from './tables.component';
 import { TablesRoutingModule } from './tables-routing.module';
-import { PageHeaderModule } from './../../shared';
+import {SharedModule} from '../../shared/shared.module';
 
 @NgModule({
     imports: [
         CommonModule,
         TablesRoutingModule,
-        PageHeaderModule
+        SharedModule
     ],
     declarations: [TablesComponent]
 })

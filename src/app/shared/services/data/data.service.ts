@@ -1,24 +1,22 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/map';
+import {CollectionDataResponse} from '../../models/collection-data-response';
 
 @Injectable()
 export class DataService {
 
-    className = 'DataService'
-    apiURL = 'https://homeshare.soic.indiana.edu/shimmer/utils/export/json?datatype=heart-rate&aggregateBy=hour';
+    baseURL = 'https://homeshare.soic.indiana.edu/shimmer';
     constructor(private http: HttpClient) { }
 
+    getCollectionData ( requestData: any ) {
+        let url: string = this.baseURL + '/export/json?datatype=' + requestData.collection + '&aggregateBy=' + requestData.aggregateBy;
+         return this.http.get<CollectionDataResponse>(url);
+    }
 
-    getCollectionData ( datatype: string ) {
-        // return this.http.get('https://api.github.com/users/seeschweiler');
-         return this.http.get(this.apiURL);
-             /*.map(function (res: Response) {
-                 return res.json();
-             });*/
+    getUserData () {
+        let url: string = this.baseURL + '/users';
+        return this.http.get<any[]>(url);
     }
 
 }
-/*interface Response {
-    data:any;
-}*/

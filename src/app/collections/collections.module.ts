@@ -4,21 +4,22 @@ import { CommonModule } from '@angular/common';
 import { CollectionsRoutingModule } from './collections-routing.module';
 import { CollectionsComponent } from './collections.component';
 import {SharedModule} from '../shared/shared.module';
-import { HeartRateComponent } from './heart-rate/heart-rate.component';
 import { HttpClientModule } from '@angular/common/http';
-// import {TranslateModule} from "@ngx-translate/core";
-// import { HeaderComponent, SidebarComponent } from '../shared'
+import { FormsModule } from '@angular/forms';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 @NgModule({
     imports: [
+        FormsModule,
         CommonModule,
         CollectionsRoutingModule,
         SharedModule,
-        HttpClientModule
+        HttpClientModule,
+        NgxDatatableModule
+
     ],
     declarations: [
-        CollectionsComponent,
-        HeartRateComponent
+        CollectionsComponent
     ]
 })
 export class CollectionsModule { }

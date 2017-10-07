@@ -13,6 +13,11 @@ const routes: Routes = [
         loadChildren: './collections/collections.module#CollectionsModule',
         canActivate: [AuthGuard]
     },
+    {
+        path: 'users',
+        loadChildren: './users/users.module#UsersModule',
+        canActivate: [AuthGuard]
+    },
     { path: 'login', loadChildren: './login/login.module#LoginModule' },
     { path: 'signup', loadChildren: './signup/signup.module#SignupModule' },
     { path: 'not-found', loadChildren: './not-found/not-found.module#NotFoundModule' },

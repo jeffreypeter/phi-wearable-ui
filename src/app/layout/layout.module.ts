@@ -6,7 +6,6 @@ import { TranslateModule } from '@ngx-translate/core';
 import { LayoutRoutingModule } from './layout-routing.module';
 import { LayoutComponent } from './layout.component';
 import {SharedModule} from '../shared/shared.module';
-// import { HeaderComponent, SidebarComponent } from '../shared';
 
 @NgModule({
     imports: [
@@ -17,9 +16,7 @@ import {SharedModule} from '../shared/shared.module';
         SharedModule
     ],
     declarations: [
-        LayoutComponent/*,
-        HeaderComponent,
-        SidebarComponent,*/
+        LayoutComponent
     ]
 })
 export class LayoutModule { }
