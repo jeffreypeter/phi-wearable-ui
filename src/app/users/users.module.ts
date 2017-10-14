@@ -1,16 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { UsersRoutingModule } from './users-routing.module';
-import { UsersComponent } from './users.component';
 import {SharedModule} from '../shared/shared.module';
+import {UsersComponent} from './users.component';
+import {ListUsersComponent} from './list-users/list-users.component';
+import { UserComponent } from './user/user.component';
+import {UserDetailsComponent} from './user/components/user-details/user-details.component';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 @NgModule({
     imports: [
+        NgxDatatableModule,
         CommonModule,
         UsersRoutingModule,
         SharedModule
     ],
-    declarations: [UsersComponent]
+    declarations: [UsersComponent, ListUsersComponent, UserDetailsComponent, UserComponent]
 })
 export class UsersModule { }

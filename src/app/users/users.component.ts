@@ -1,26 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import {DataService} from '../shared/services/data/data.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-users',
     templateUrl: './users.component.html',
-    styleUrls: ['./users.component.scss'],
-    providers: [DataService]
+    styleUrls: ['./users.component.scss']
 
 })
 export class UsersComponent implements OnInit {
 
-    userData: any = [];
-    constructor(private dataService: DataService) { }
+    constructor(public router: Router) { }
 
     ngOnInit() {
-        this.dataService.getUserData().subscribe(
-            data => {
-                console.log('success');
-                this.userData = data;
-                console.log(data);
-            }
-        );
+        // console.log(this.router.url)
+        if (this.router.url === '/users') {
+            this.router.navigate(['/users/list-users']);
+        }
     }
 
 }

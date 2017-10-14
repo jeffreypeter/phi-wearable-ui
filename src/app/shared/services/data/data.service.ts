@@ -11,6 +11,9 @@ export class DataService {
 
     getCollectionData ( requestData: any ) {
         let url: string = this.baseURL + '/export/json?datatype=' + requestData.collection + '&aggregateBy=' + requestData.aggregateBy;
+        if (requestData.username) {
+            url = url + '&username=' + requestData.username;
+        }
          return this.http.get<CollectionDataResponse>(url);
     }
 

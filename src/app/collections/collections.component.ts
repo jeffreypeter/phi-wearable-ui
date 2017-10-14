@@ -14,7 +14,6 @@ export class CollectionsComponent implements OnInit {
     keys = [];
     data = [];
     temp = [];
-
     public collectionLst: any = [
         {name: 'Heart Rate', value: 'heart-rate'},
         {name: 'Step Count', value: 'step-count'},
@@ -26,14 +25,10 @@ export class CollectionsComponent implements OnInit {
         {name: 'Hour', value: 'hour'},
         {name: 'Minute', value: 'minute'}
     ];
-    collectionData: any = {};
     @ViewChild('table') table;
     public requestData: any = {collection: '', aggregateBy: ''};
     constructor(private dataService: DataService) { }
     ngOnInit(): void {
-        /*if (this.router.url === '/') {
-         this.router.navigate(['/heart-rate']);
-         }*/
         this.requestData.collection = 'heart-rate';
         this.requestData.aggregateBy = 'day';
         this.onSubmit();
