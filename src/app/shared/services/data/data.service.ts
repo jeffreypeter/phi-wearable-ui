@@ -10,7 +10,11 @@ export class DataService {
     constructor(private http: HttpClient) { }
 
     getCollectionData ( requestData: any ) {
-        let url: string = this.baseURL + '/export/json?datatype=' + requestData.collection + '&aggregateBy=' + requestData.aggregateBy;
+        let url: string = this.baseURL
+                            + '/export/json?datatype=' + requestData.collection
+                            + '&aggregateBy=' + requestData.aggregateBy
+                            + '&offset=' + requestData.offset
+                            + '&pageSize=' + requestData.pageSize;
         if (requestData.username) {
             url = url + '&username=' + requestData.username;
         }

@@ -1,4 +1,4 @@
 export interface CollectionDataResponse {
     keys: any;
-    data: any;
+    data: any[];
 }

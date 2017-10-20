@@ -1,6 +1,8 @@
 import {Component, OnInit, ViewEncapsulation, ViewChild} from '@angular/core';
 import {DataService} from '../shared/services/data/data.service';
 import {CollectionDataResponse} from '../shared/models/collection-data-response';
+import {CollectionDataRequest} from '../shared/models/collection-data-request';
+import {DatatableComponent} from '@swimlane/ngx-datatable';
 
 @Component({
     selector: 'app-collections',
@@ -25,12 +27,14 @@ export class CollectionsComponent implements OnInit {
         {name: 'Hour', value: 'hour'},
         {name: 'Minute', value: 'minute'}
     ];
-    @ViewChild('table') table;
-    public requestData: any = {collection: '', aggregateBy: ''};
+    @ViewChild(DatatableComponent) table: DatatableComponent;
+    public requestData: CollectionDataRequest = new CollectionDataRequest();
     constructor(private dataService: DataService) { }
     ngOnInit(): void {
         this.requestData.collection = 'heart-rate';
         this.requestData.aggregateBy = 'day';
+        this.requestData.pageSize = '100';
+        this.requestData.offset = '0';
         this.onSubmit();
     }
 
@@ -43,8 +47,7 @@ export class CollectionsComponent implements OnInit {
                 this.keys = [{ name: 'Username' }, { name: 'Shim' }, { name: 'Time' }, {name: 'Values' }];
                 this.temp = [...data.data];
                 this.data = data.data;
-                // console.log(data.keys);
-                // console.log(data.data);
+                this.table.offset = 0;
             }
         );
     }
@@ -60,7 +63,7 @@ export class CollectionsComponent implements OnInit {
         this.data = temp;
         // Whenever the filter changes, always go back to the first page
         // console.log(this.table);
-        // this.table.offset = 0;
+        this.table.offset = 0;
     }
 
 }

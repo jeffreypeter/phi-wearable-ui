@@ -7,9 +7,11 @@ import {ListUsersComponent} from './list-users/list-users.component';
 import { UserComponent } from './user/user.component';
 import {UserDetailsComponent} from './user/components/user-details/user-details.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     imports: [
+        FormsModule,
         NgxDatatableModule,
         CommonModule,
         UsersRoutingModule,

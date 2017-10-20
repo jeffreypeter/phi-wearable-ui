@@ -1,0 +1,2 @@
+<app-page-header [heading]="username" [icon]="'fa-user'"></app-page-header>
+<app-user-details *ngFor="let item of collectionLst" [collection]="item" [username]="username" [collectionSelectors]="collectionSelectors"></app-user-details>
