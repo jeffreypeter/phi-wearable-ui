@@ -8,11 +8,14 @@ import { UserComponent } from './user/user.component';
 import {UserDetailsComponent} from './user/components/user-details/user-details.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { FormsModule } from '@angular/forms';
+import {NgxChartsModule} from '@swimlane/ngx-charts';
+
 
 @NgModule({
     imports: [
         FormsModule,
         NgxDatatableModule,
+        NgxChartsModule,
         CommonModule,
         UsersRoutingModule,
         SharedModule

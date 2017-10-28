@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import {CollectionDataResponse} from '../../models/collection-data-response';
+import {ChartUserResponse} from '../../models/chart-user-response';
+import {ChartUserRequest} from '../../models/chart-user-request';
+import {DataSyncResponse} from '../../models/datasync-response';
 
 @Injectable()
 export class DataService {
@@ -24,6 +27,19 @@ export class DataService {
     getUserData () {
         let url: string = this.baseURL + '/users';
         return this.http.get<any[]>(url);
+    }
+    getSyncDetails () {
+        let url: string = this.baseURL + '/syncDetails';
+        return this.http.get<DataSyncResponse>(url);
+    }
+    getChartData( requestData:ChartUserRequest ) {
+        console.log(requestData);
+        let url: string = this.baseURL
+            + '/chart/' + requestData.username + '/' + requestData.collection
+            + '?offset=' + requestData.offset
+            + '&pageSize=' + requestData.pageSize;
+        console.log(url);
+        return this.http.get<ChartUserResponse>(url);
     }
 
 }
