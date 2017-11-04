@@ -36,8 +36,9 @@
     </div>-->
     <div class="row">
         <div class="col-lg-12">
-            <ngx-datatable
-                #{{collection.element}}
+            <div><span class="time"><span class="{{collection.value}}" (click)="modGranularity($event,'-')"><i class="fa fa-backward" aria-hidden="true"></i> Aggregate By: </span></span>{{aggregateBy[level].name}}</div>
+            <!--<ngx-datatable
+                #table
                 class="material fullscreen"
                 [rows]="data"
                 [columns]="keys"
@@ -48,10 +49,43 @@
                 [externalPaging]="true"
                 [count]="page.totalElements"
                 [offset]="page.pageNumber"
-                [limit]="page.size"
+                [limit]="10"
                 (page) = 'setPage($event)'
                 style="top: 5px"
+            >-->
+            <ngx-datatable
+                #table
+                class="material fullscreen"
+                [rows]="data"
+                [columns]="keys"
+                [columnMode]="'force'"
+                [headerHeight]="50"
+                [footerHeight]="50"
+                [rowHeight]="'auto'"
+                [limit]="10"
+                style="top: 5px"
             >
+                <!--<template ngFor let-item [ngForOf]="items">
+                    <ngx-datatable-column name="{{item.name}}">
+                        &lt;!&ndash;<ng-template [ngIf]="item.name == 'Time'">&ndash;&gt;
+                        <ng-template let-value="value" ngx-datatable-cell-template>
+                            <span class="{{collection.value}}" (click)="granularData($event)">{{value}}</span>
+                        </ng-template>
+                        &lt;!&ndash;</ng-template>&ndash;&gt;
+                    </ngx-datatable-column>
+                </template>-->
+                <ngx-datatable-column name="Username">
+                </ngx-datatable-column>
+                <ngx-datatable-column name="Shim">
+                </ngx-datatable-column>
+                <ngx-datatable-column name="Time">
+                    <ng-template let-value="value" ngx-datatable-cell-template>
+                        <span class="time"><span class="{{collection.value}}" (click)="modGranularity($event,'+')">{{value}}</span></span>
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column name="Values">
+                </ngx-datatable-column>
+
             </ngx-datatable>
         </div>
     </div>

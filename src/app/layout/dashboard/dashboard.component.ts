@@ -12,7 +12,7 @@ import {DataService} from '../../shared/services/data/data.service';
 export class DashboardComponent implements OnInit {
     public alerts: Array<any> = [];
     public sliders: Array<any> = [];
-    public stats: any = {userCount: 0};
+    public stats: any = {userCount: 0, syncReqCount: 0};
     constructor(private dataService: DataService) {
         this.sliders.push({
             imagePath: 'assets/images/slider1.jpg',
@@ -48,9 +48,18 @@ export class DashboardComponent implements OnInit {
     ngOnInit() {
         this.dataService.getUserData().subscribe(
             data => {
-                console.log('success');
-                console.log(data.length);
                 this.stats.userCount = data.length;
+            }
+        );
+        this.dataService.getSyncDetails().subscribe(
+            data => {
+                this.stats.syncReqCount = 0;
+                for(let i = 0; i < data.data.length; i++) {
+                    let diff = new Date().getTime() - data.data[i].lastNotified;
+                     if (( diff ) > 172800000) {
+                        this.stats.syncReqCount ++;
+                     }
+                }
             }
         );
     }

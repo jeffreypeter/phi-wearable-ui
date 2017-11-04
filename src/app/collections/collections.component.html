@@ -3,51 +3,44 @@
 <section class="main-container">
     <app-page-header [heading]="'Collections'" [icon]="'fa-table'"></app-page-header>
     <div class="row">
-        <div class="col-lg-12">
-            <div class="form-inline">
-                <div class="form-group">
-                    <label class="mr-sm-2" for="collection">Select Collection: </label>
-                    <select class="form-control mb-2 mr-sm-2 mb-sm-0" id="collection"  [(ngModel)]="requestData.collection">
-                        <option *ngFor="let collection of collectionLst;let i = index" [ngValue]="collection.value" [selected]="i===0">{{collection.name}}</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label class="mr-sm-2" for="collection">Aggregate By: </label>
-                    <div class="form-check form-check-inline">
-                        <label class="form-check-label" *ngFor="let item of aggregateBy; let i = index">
-                            <input class="form-check-input" type="radio" name="aggregateBy" [value]="item.value" [checked]="i===0" [(ngModel)]="requestData.aggregateBy">{{item.name}}
-                        </label>
-                    </div>
-                </div>
-                <button type="button" class="btn btn-primary" (click)="onSubmit()" >Submit</button>
-            </div>
-        </div>
+        <h3>Export Data</h3>
     </div>
     <div class="row">
-        <!--<ngx-datatable
-            [rows]="collectionData.data"
-            [columns]="columns">
-        </ngx-datatable>-->
-        <div class="col-lg-12">
-            <input
-                type='text'
-                style='padding:8px;margin:15px auto;width:30%;'
-                placeholder='Type to filter the name column...'
-                (keyup)='updateFilter($event)'
-            />
-            <ngx-datatable
-                #table
-                [rows]="data"
-                [columns]="keys"
-                [headerHeight]="50"
-                [footerHeight]="50"
-                [rowHeight]="'auto'"
-                [limit]="10"
-                class="material fullscreen"
-                style="top: 5px" [columnMode]="'force'"
-            >
-            </ngx-datatable>
+        <fieldset class="form-group">
+            <label>Aggregate By: </label>
+            <ng-template ngFor let-item [ngForOf]="aggregateBy">
+                <label class="radio-inline">
+                    <input type="radio" name="aggregateBy" id="aggregateBy-{{item.value}}" value="{{item.value}}" [(ngModel)]="selAggregateBy"> {{item.name}}
+                </label>
+            </ng-template>
+        </fieldset>
+        <div class="form-group">
+            <label>Collections: </label> <p-multiSelect [options]="collectionLst" [(ngModel)]="selCollection" optionLabel="name" inputId="value"></p-multiSelect>
+        </div>
+        <div class="form-group">
+            <label>Users: </label> <p-multiSelect [options]="syncDetails" [(ngModel)]="selUser" optionLabel="userId" inputId="userId"></p-multiSelect>
+        </div>
+        <label>Start Date: </label> <p-calendar [(ngModel)]="dataStartDate" dateFormat="mm/dd/yy" showButtonBar="true" [minDate]="minDate" [maxDate]="maxDate" readonlyInput="readonlyInput" showIcon="true"></p-calendar>
+        <label>End Date: </label> <p-calendar [(ngModel)]="dataEndDate" dateFormat="mm/dd/yy" showButtonBar="true" [minDate]="minDate" [maxDate]="maxDate" readonlyInput="readonlyInput" showIcon="true"></p-calendar>
+        <div class="form-group">
+            <button type="button" class="btn btn-primary" (click)="export()">Export</button>
         </div>
     </div>
+
+    <!--<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button>
+    <ng-template #content let-c="close" let-d="dismiss">
+        <div class="modal-header">
+            <h4 class="modal-title">Modal title</h4>
+            <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <p>One fine body&hellip;</p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+        </div>
+    </ng-template>-->
     <!--<router-outlet></router-outlet>-->
 </section>

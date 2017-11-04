@@ -7,6 +7,8 @@ import {SharedModule} from '../shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { MultiSelectModule, CalendarModule } from 'primeng/primeng';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
     imports: [
@@ -15,8 +17,10 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
         CollectionsRoutingModule,
         SharedModule,
         HttpClientModule,
-        NgxDatatableModule
-
+        NgxDatatableModule,
+        MultiSelectModule,
+        CalendarModule,
+        NgbModule.forRoot()
     ],
     declarations: [
         CollectionsComponent

@@ -8,4 +8,6 @@ export class CollectionDataRequest {
     username: string;
     offset: string;
     pageSize: string;
+    start: string;
+    end: string;
 }
